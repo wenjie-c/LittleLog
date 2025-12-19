@@ -68,9 +68,8 @@ class ConsoleLogger : Logger
     {
         lock_guard<std::mutex> guard(logMutex);
         time_t t = time(0);
-        string time = string(asctime(localtime(&t)));
+        string time = asctime(localtime(&t));
         time.pop_back(); // erasing last newline
-        time[sizeof(time) - 1] = '\0';
         string slevel = logLevelToString(level);
 
         printf("%s [%s] %s %i: %s\n" , time.c_str(), slevel.c_str(), file, line,messaje.c_str());
@@ -99,9 +98,8 @@ class FileLogger : Logger
     {
         lock_guard<std::mutex> guard(logMutex);
         time_t t = time(0);
-        string time = string(asctime(localtime(&t)));
+        string time = asctime(localtime(&t));
         time.pop_back(); // erasing last newline
-        time[sizeof(time) - 1] = '\0';
         string slevel = logLevelToString(level);
         char buffer[LOG_BUFFER] = {0}; 
         sprintf(buffer,"%s [%s] %s %i: %s\n" , time.c_str(), slevel.c_str(), file, line,messaje.c_str());

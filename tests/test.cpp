@@ -8,12 +8,16 @@ TEST(ConsoleLogTest, LogTest)
 {
     ConsoleLogger logger;
     LOG_INFO(logger, "This is an informational message.");
+    LOG_WARNING(logger, "This is a warning message.");
+    LOG_ERROR(logger, "This is an error message.");
 }
 
 TEST(FileLogTest, LogTest)
 {
     FileLogger logger("test.log");
     LOG_INFO(logger, "This is an informational message.");
+    LOG_WARNING(logger, "This is a warning message.");
+    LOG_ERROR(logger, "This is an error message.");
 }
 
 

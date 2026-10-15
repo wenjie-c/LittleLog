@@ -72,7 +72,7 @@ class ConsoleLogger : Logger
         time.pop_back(); // erasing last newline
         string slevel = logLevelToString(level);
 
-        printf("%s [%s] %s %i: %s\n" , time.c_str(), slevel.c_str(), file, line,messaje.c_str());
+        printf("[%s] [%s] [%s:%i]: %s\n" , time.c_str(), slevel.c_str(), file, line,messaje.c_str());
     }
 };
 
@@ -102,7 +102,7 @@ class FileLogger : Logger
         time.pop_back(); // erasing last newline
         string slevel = logLevelToString(level);
         char buffer[LOG_BUFFER] = {0}; 
-        sprintf(buffer,"%s [%s] %s %i: %s\n" , time.c_str(), slevel.c_str(), file, line,messaje.c_str());
+        sprintf(buffer,"[%s] [%s] [%s:%i]: %s\n", time.c_str(), slevel.c_str(), file, line,messaje.c_str());
         logFile << buffer;
     }
     ~FileLogger()
